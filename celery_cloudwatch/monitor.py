@@ -14,7 +14,7 @@ LOGGER = logging.getLogger(__name__)
 SEQUENCE_TOKENS = {}
 
 
-def get_sequence_token(cloudwatch, log_group: str, log_stream: str):
+def get_sequence_token(cloudwatch, log_group, log_stream):
     """Gets the next sequence token to use for uploading
     a log even to CloudWatch.
 
@@ -50,7 +50,7 @@ def get_sequence_token(cloudwatch, log_group: str, log_stream: str):
     return token
 
 
-def get_timestamp_utc() -> int:
+def get_timestamp_utc():
     """Gets the current date/time in UTC neutral
     timestamp, formatted as the amount of milliseconds
     that passed since January 1, 1970 (unix epoch).
@@ -229,8 +229,6 @@ def main():
 
     # check for required environment variables
     env_vars = [
-        'AWS_CLOUDWATCH_ACCESS_KEY',
-        'AWS_CLOUDWATCH_SECRET_KEY',
         'AWS_CLOUDWATCH_GROUP_NAME'
     ]
 
